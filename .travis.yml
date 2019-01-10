@@ -1,0 +1,35 @@
+# Travis build configuration
+# https://docs.travis-ci.com/user/customizing-the-build/
+language: go
+# sudo: required
+
+# Version of go to use
+go:
+  - "1.11.x"
+
+# Placed source code under GOPATH
+go_import_path: github.com/skycoin/cx-gui-helper
+
+# Define global variables
+env:
+  - GOARCH=amd64
+
+# Use a matrix to define SO and possible future changes
+matrix:
+  include:
+    - os: linux
+      dist: xenial
+    - os: osx
+
+# Install necessary go packages
+# install:
+
+# Build, test & run cx test
+# Block PR if golden files not up to date
+# script:
+
+# Notifications to Telegram channel
+notifications:
+  email: false
+  # https://github.com/kvld/travisci-telegram TravisCI Telegram Bot integration
+webhooks: https://fathomless-fjord-24024.herokuapp.com/notify
